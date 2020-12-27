@@ -1,18 +1,18 @@
 .topHeading{
     margin-left: 15px;
-    margin-top: 40px;
     color: red;
-    font-size: 25px;
+    font-size: 30px;
+    padding-top: 20px;
 }
 .appForm .appFormStyle .ant-col-md-12:nth-child(1){
     padding-right: 5rem;
     padding-left: 5rem;
-    padding-top: 50px;
+    padding-top: 20px;
 }
 .appForm .appFormStyle .ant-col-md-12:nth-child(2){
     padding-left: 5rem;
     padding-right: 5rem;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 .appFormStyle label {
     position: relative;
@@ -20,11 +20,11 @@
     /* top: 10px; */
     font-size: 15px;
     color: black;
-    margin: 0 0 4px 0;
+    margin: 0 0 10 0;
     display: inline-block;
     line-height: 20px;
 }
-.appFormStyle input{
+.appForm .appFormStyle input {
     background: none;
     border: none;
     border-bottom: 1px solid #CECECE;
@@ -71,39 +71,41 @@
     color: inherit;
     opacity: 0.33;
 }  
+
+
 /*.appForm .appFormStyle .ant-select-selection {*/
-    .select{  
-        background: none;
-        border: none;
-        border-bottom: 1px solid #CECECE;
-        /*padding: 0 0 7px 0; */
-        font-size: 14.5px;
-        outline: 0 ;
-        -webkit-box-shadow: none;
-        box-shadow: none!important;
-        color: #2c2c2c;
-        transition: none;
-    }
-    .select:focus{
-        color: #495057;
-        outline: 0 ;
-        -webkit-box-shadow: none;
-        box-shadow: none!important;
-    }
-    /*.birth{  
-        text-align: left;
-        border-bottom: 1px solid #CECECE;
-        border: none;
-        padding:0%;
-        width: 620px ;
-    }*/
-    /*.appForm .appFormStyle .ant-calendar-picker-input.ant-input .ant-calendar-range-picker-separator input {*/
-  .range{  
+  .select{  
+    background: none;
+    border: none;
+    border-bottom: 1px solid #CECECE;
+    /*padding: 0 0 7px 0; */
+    font-size: 14.5px;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+    color: #2c2c2c;
+    transition: none;
+}
+.select:focus{
+    color: #495057;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+}
+.birth{  
     text-align: left;
     border-bottom: 1px solid #CECECE;
     border: none;
     padding:0%;
-    width: 530px ;
+    width: 620px ;
+}
+/*.appForm .appFormStyle .ant-calendar-picker-input.ant-input .ant-calendar-range-picker-separator input {*/
+.range{  
+    text-align: left;
+    border-bottom: 1px solid #CECECE;
+    border: none;
+    padding:0%;
+    width: 530px;
 }
 .range:focus{  
     text-align: left;
@@ -135,3 +137,28 @@
     margin-bottom: 0px; 
     height: 55px;
 }
+
+
+
+/*
+@media (max-width: 767px) {
+    .appForm > .ant-row {
+        margin-left: 0!important;
+        margin-right: 0!important;        
+    }
+    .appForm .appFormStyle .ant-col-md-12:nth-child(1){
+        padding-right: 0rem;
+    }
+    
+    .appForm .appFormStyle .ant-col-md-12:nth-child(2){
+        padding-left: 0rem;
+    }
+}
+
+@media  (min-width: 768px) and (max-width: 991px){
+    .appForm .appFormStyle .ant-col-md-12{
+        padding: 0 15px !important;
+    }
+}*/
+
+
