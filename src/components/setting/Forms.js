@@ -89,6 +89,8 @@ class Forms extends Component {
                               optionFilterProp="children"
                               getPopupContainer={trigger => trigger.parentNode}
                               placeholder="Select Gender"
+                              bordered={false}
+                              className="select"
                              >
                              <Option value="">Select Gender</Option>
                              <Option value="M">Male</Option>

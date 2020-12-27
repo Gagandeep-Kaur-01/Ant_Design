@@ -71,3 +71,16 @@
     color: inherit;
     opacity: 0.33;
 }  
+/*.appForm .appFormStyle .ant-select-selection {*/
+    .select{  
+        background: none;
+        border: none;
+        border-bottom: 1px solid #CECECE;
+        /*padding: 0 0 7px 0; */
+        font-size: 14.5px;
+        outline: 0 ;
+        -webkit-box-shadow: none;
+        box-shadow: none!important;
+        color: #2c2c2c;
+        transition: none;
+    }
