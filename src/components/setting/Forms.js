@@ -201,6 +201,21 @@ class Forms extends Component {
                             <Input type="email" name="email" id="email" placeholder="Email" autoComplete="off" />
                           </FormItem>
                         </Col>
+                        <Col md={12} xs={24}>
+                          <FormItem
+                            name={['user', 'age']}
+                            label="Age"
+                            rules={[
+                             {
+                             type: 'number',
+                             min: 0,
+                             max: 99,
+                             },
+                            ]}
+                           >
+                            <Input type="number" name="age" id="age" placeholder="Age" autoComplete="off" />
+                          </FormItem>
+                        </Col>  
                     </Row> 
 
                   </Col>
