@@ -4,3 +4,70 @@
     color: red;
     font-size: 25px;
 }
+.appForm .appFormStyle .ant-col-md-12:nth-child(1){
+    padding-right: 5rem;
+    padding-left: 5rem;
+    padding-top: 50px;
+}
+.appForm .appFormStyle .ant-col-md-12:nth-child(2){
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 50px;
+}
+.appFormStyle label {
+    position: relative;
+    /* top: 14px; */
+    /* top: 10px; */
+    font-size: 15px;
+    color: black;
+    margin: 0 0 4px 0;
+    display: inline-block;
+    line-height: 20px;
+}
+.appFormStyle input{
+    background: none;
+    border: none;
+    border-bottom: 1px solid #CECECE;
+    padding: 0 0 10px 0;
+    font-size: 14.5px;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+    margin: 0px;
+}
+.appForm .appFormStyle input:focus {
+    color: #495057;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+}
+.appForm .appFormStyle .ant-select-selection:focus, .appForm .appFormStyle .ant-select-selection__rendered:focus {
+    color: #495057;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+}
+.appForm .appFormStyle input:focus::-moz-placeholder {
+    color: inherit;
+    opacity: 0.7;
+}
+.appForm .appFormStyle input:focus:-ms-input-placeholder {
+    color: inherit;
+    opacity: 0.7;
+}
+.appForm .appFormStyle input:focus::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.7;
+}
+.appForm .appFormStyle input::-moz-placeholder {
+    color: inherit;
+    opacity: 0.33;
+}
+.appForm .appFormStyle input:-ms-input-placeholder {
+    color: inherit;
+    opacity: 0.33;
+}
+.appForm .appFormStyle input::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.33;
+}  
