@@ -69,6 +69,14 @@ class Forms extends Component {
                           </FormItem>
                         </Col>
                     </Row>
+                    
+                    <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                          <FormItem label="Password" hasFeedback>                          
+                            <Input type="password" name="password" id="password" placeholder="Password" autoComplete="off" />
+                          </FormItem>
+                        </Col>                        
+                      </Row>
 
                   </Col>
                 </Row> 
