@@ -74,6 +74,12 @@ export default class DatePicker extends React.Component {
 		this.checkDate(e, type);
 	}
 
+	DateChange(event) {
+		this.setState({
+			year: event.target.year,
+		})
+	}
+
 	getDate(date) {
 		if(moment(date).isValid()) {
 			return moment(date).format("YYYY-MM-DD");
@@ -129,7 +135,7 @@ export default class DatePicker extends React.Component {
 		return (
 			<Row justify="start">
 			  <Col sm={8} xs={24}>		
-				<Select defaultValue="" onChange={(e) => this.changeDate(e, 'selectMonth')} style={{ width: "95%" }} value={this.state.selectMonth}
+				<Select defaultValue="" /*onChange={(e) => this.changeDate(e, 'selectMonth')}*/ style={{ width: "95%" , borderBottom: "1px solid #CECECE"}} bordered={false} value={this.state.selectMonth}
 				getPopupContainer={trigger => trigger.parentNode}>
 				  <Option value="">{this.props.monthLabel} </Option>
 					{ monthElement }
@@ -137,7 +143,7 @@ export default class DatePicker extends React.Component {
 			  </Col>
 
 			  <Col sm={8} xs={24}>	
-				<Select defaultValue="" onChange={(e) => this.changeDate(e, 'selectDay')} style={{ width: "95%" }} value={this.state.selectDay}
+				<Select defaultValue="" style={{ width: "95%" , borderBottom: "1px solid #CECECE"}} bordered={false} value={this.state.selectDay}
 				getPopupContainer={trigger => trigger.parentNode}>
 				  <Option value="">{this.props.dayLabel}</Option>
 				  { dayElement }
@@ -145,7 +151,7 @@ export default class DatePicker extends React.Component {
 			  </Col>			  
 				
 			  <Col sm={8} xs={24}>			
-				<Select defaultValue="" onChange={(e) => this.changeDate(e, 'selectYear')} value={this.state.selectYear}
+				<Select defaultValue="" onChange={this.DateChange} style={{ width: "95%" , borderBottom: "1px solid #CECECE"}} bordered={false} value={this.state.selectYear}
 				getPopupContainer={trigger => trigger.parentNode}> 
 					<Option value="">{this.props.yearLabel}</Option>
 					{ yearElement }
