@@ -76,10 +76,40 @@ class Forms extends Component {
                     
                     <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
-                          <FormItem label="Password" hasFeedback>                          
+                          <FormItem label="Password" 
+                                    name="password"
+                                    rules={[
+                                      {
+                                      //required: true,
+                                      },
+                                      ]}  hasFeedback>                          
                             <Input type="password" name="password" id="password" placeholder="Password" autoComplete="off" />
                           </FormItem>
-                        </Col>                        
+                        </Col> 
+                        <Col md={12} xs={24} >
+                          <FormItem
+                            name="confirm"
+                            label="Confirm Password"
+                            dependencies={['password']}
+                            hasFeedback
+                            rules={[
+                              {
+                                //required: true,
+                                message: 'Please confirm your password!',
+                              },
+                              ({ getFieldValue }) => ({
+                                validator(rule, value) {
+                                  if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                  }
+                                    return Promise.reject('The two passwords that you entered do not match!');
+                                },
+                              }),
+                            ]}
+                           >
+                            <Input type="password" name="password" id="password" placeholder="Confirm Password" autoComplete="off" />
+                          </FormItem>
+                        </Col>                             
                     </Row>
 
                     <Row justify="start" className="appFormStyle">
