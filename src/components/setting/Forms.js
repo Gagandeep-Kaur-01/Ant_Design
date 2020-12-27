@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Form, Input, InputNumber, Button, Select, Checkbox, Upload, message, Icon, Row, Col, DatePicker } from 'antd'
-import Box from '../utility/Box';
+import './Forms.css'
 const FormItem = Form.Item;
+
 
 class Forms extends Component {
 
