@@ -111,9 +111,9 @@ class Forms extends Component {
                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="Range" hasFeedback>                          
-                            <RangePicker picker="month" bordered={false} className="range"/>
+                            <RangePicker picker="date" bordered={false} className="range"/>
                           </FormItem>
-                        </Col>                        
+                        </Col>                         
                       </Row>   
 
                   </Col>
