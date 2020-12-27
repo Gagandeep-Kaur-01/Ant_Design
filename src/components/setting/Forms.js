@@ -230,6 +230,12 @@ class Forms extends Component {
                             <TextArea name="note" id="note" rows={6} placeholder="Notes" />
                           </FormItem>
                         </Col> 
+                        <Col md={12} xs={24} >
+                          <FormItem label="Zip" hasFeedback>
+                            <Input type="text" name="zip" id="zip" maxLength={6}
+                               placeholder="Zip" autoComplete="off" />
+                          </FormItem>  
+                        </Col> 
                     </Row>    
 
                   </Col>
