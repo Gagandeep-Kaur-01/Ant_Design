@@ -35,14 +35,47 @@ class Forms extends Component {
         };
         const gutter = 16;
 
+        const validateMessages = {
+            required: '${label} is required!',
+            types: {
+              email: '${label} is not a valid email!',
+              number: '${label} is not a valid number!',
+            },
+            number: {
+            range: '${label} must be between ${min} and ${max}',
+            },
+          };
+
         const onFinish = (values) => {
         console.log(values);
         };
 
         return (
-            <div>
+          <div>
             <h2 className="topHeading">Form in Ant Design</h2>
-            </div>
+            <Form style={{ width: "100%", marginRight: "10px" }} onFinish={onFinish} validateMessages={validateMessages} className="appForm" >
+               <Row style={rowStyle} gutter={gutter} justify="start"> 
+                  <Col md={24} sm={24} xs={24} style={colStyle}> 
+                
+                    <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                          <FormItem label="First Name" hasFeedback>                          
+                            <Input type="text" name="first_name" id="first_name" maxLength={150} placeholder="First Name" autoComplete="off" />
+                          </FormItem>
+                        </Col>
+                        <Col md={12} xs={24}>
+                          <FormItem label="Last Name" hasFeedback>                          
+                              <Input type="text" name="last_name" id="last_name" maxLength={150} placeholder="Last Name" autoComplete="off"/>
+                          </FormItem>
+                        </Col>
+                    </Row>
+
+                  </Col>
+                </Row> 
+            </Form>       
+
+                      
+         </div>
          
         );  
     }
