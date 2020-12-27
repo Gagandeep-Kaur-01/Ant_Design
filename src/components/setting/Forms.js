@@ -4,8 +4,10 @@ import 'antd/dist/antd.css';
 import { Form, Input, InputNumber, Button, Select, Checkbox, Upload, message, Icon, Row, Col, DatePicker } from 'antd'
 import BirthDatePicker from "../utility/datePicker";
 import './Forms.css'
+
 const FormItem = Form.Item;
 const Option = Select.Option;
+const { RangePicker } = DatePicker;
 
 
 class Forms extends Component {
@@ -104,7 +106,15 @@ class Forms extends Component {
                             <BirthDatePicker/>    
                           </FormItem>
                         </Col>
-                    </Row>    
+                    </Row> 
+
+                     <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                          <FormItem label="Range" hasFeedback>                          
+                            <RangePicker picker="month" bordered={false} className="range"/>
+                          </FormItem>
+                        </Col>                        
+                      </Row>   
 
                   </Col>
                 </Row> 
