@@ -121,3 +121,17 @@
     -webkit-box-shadow: none;
     box-shadow: none!important;
 }*/
+.appForm .appFormStyle Textarea {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #CECECE;
+    padding: 0 0 10px 0;
+    font-size: 14.5px;
+    color: #2c2c2c;
+    outline: 0 ;
+    -webkit-box-shadow: none;
+    box-shadow: none!important;
+    margin-top: 10px; 
+    margin-bottom: 0px; 
+    height: 55px;
+}
