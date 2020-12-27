@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Form, Input, InputNumber, Button, Select, Checkbox, Upload, message, Icon, Row, Col, DatePicker } from 'antd'
+import BirthDatePicker from "../utility/datePicker";
 import './Forms.css'
 const FormItem = Form.Item;
 const Option = Select.Option;
