@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import { Form, Input, InputNumber, Button, Select, Checkbox, Upload, message, Icon, Row, Col, DatePicker } from 'antd'
 import './Forms.css'
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 
 class Forms extends Component {
@@ -76,7 +77,26 @@ class Forms extends Component {
                             <Input type="password" name="password" id="password" placeholder="Password" autoComplete="off" />
                           </FormItem>
                         </Col>                        
-                      </Row>
+                    </Row>
+
+                    <Row justify="start" className="appFormStyle">
+                        <Col md={12} xs={24}>
+                          <FormItem label="Gender">
+                            <Select
+                              name="gender"
+                              id="gender"
+                              showSearch
+                              optionFilterProp="children"
+                              getPopupContainer={trigger => trigger.parentNode}
+                              placeholder="Select Gender"
+                             >
+                             <Option value="">Select Gender</Option>
+                             <Option value="M">Male</Option>
+                             <Option value="F">Female</Option>
+                            </Select>                    
+                          </FormItem>
+                        </Col>
+                    </Row>    
 
                   </Col>
                 </Row> 
