@@ -138,13 +138,25 @@ class Forms extends Component {
                         </Col>
                     </Row> 
 
-                     <Row justify="start" className="appFormStyle" >
+                    <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="Range" hasFeedback>                          
                             <RangePicker picker="date" bordered={false} className="range"/>
                           </FormItem>
-                        </Col>                         
-                      </Row>   
+                        </Col> 
+                        <Col md={12} xs={24}>
+                          <FormItem label="Contact Number" hasFeedback>
+                            <Input
+                              type="number"
+                              pattern="^-?[0-9]\d*\.?\d*$"
+                              name="phone_number"
+                              id="phone_number"                              
+                              maxLength={14}
+                              placeholder="Contact Number" autoComplete="off"
+                            />
+                          </FormItem>
+                        </Col>                           
+                    </Row>   
 
                   </Col>
                 </Row> 
