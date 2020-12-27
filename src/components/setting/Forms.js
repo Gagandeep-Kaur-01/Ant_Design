@@ -99,6 +99,11 @@ class Forms extends Component {
                             </Select>                    
                           </FormItem>
                         </Col>
+                        <Col md={12} xs={24}>
+                          <FormItem label="Birth Date">                            
+                            <BirthDatePicker/>    
+                          </FormItem>
+                        </Col>
                     </Row>    
 
                   </Col>
