@@ -8,6 +8,7 @@ import './Forms.css'
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
+const { TextArea } = Input;
 
 
 class Forms extends Component {
@@ -217,6 +218,19 @@ class Forms extends Component {
                           </FormItem>
                         </Col>  
                     </Row> 
+                    <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                          <FormItem label="Note" name="note"
+                                     /*rules={[
+                                      {
+                                      //required: true,
+                                      },
+                                      ]}*/  hasFeedback>         
+                                                      
+                            <TextArea name="note" id="note" rows={6} placeholder="Notes" />
+                          </FormItem>
+                        </Col> 
+                    </Row>    
 
                   </Col>
                 </Row> 
