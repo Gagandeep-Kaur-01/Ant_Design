@@ -17,6 +17,10 @@ class Forms extends Component {
     }
 
     render(){
+
+      //Convert capital to small letters
+      const getLowercaseValue = e => e.target.value.toLowerCase().trim();
+
         const layout = {   
           labelCol: {
           span: 8,
@@ -156,7 +160,48 @@ class Forms extends Component {
                             />
                           </FormItem>
                         </Col>                           
-                    </Row>   
+                    </Row>  
+                    <Row justify="start" className="appFormStyle">
+                        <Col md={12} xs={24}>
+                          <FormItem 
+                                label="Email" 
+                                type="email"
+                                name="email"                             
+                                rules={[
+                                  {
+                                    //required: true,
+                                    type: "email",
+							                      message: "Please enter valid email."
+                                  },
+                                  ({getFieldValue}) => ({
+                                    getValueFromEvent: getLowercaseValue,
+					                          validate: [{
+					                          trigger: 'onChange',
+					        	                  rules: [{
+							                          type: "email",
+							                          message: "Please enter valid email."
+						                        	  },
+						                          	{
+							                            required: true,
+							                            whitespace: true,
+							                            message: "Please enter email."
+						                           	}
+					                        	  ]
+					                          	}, { 
+					                            	trigger: 'onChange',
+					                                rules: [
+						                             	  {
+						                            		validator: this.handleTrigger
+						                              	}
+					                                ]
+					                            }]
+                                  }) 
+                                ]} 
+                                hasFeedback  >
+                            <Input type="email" name="email" id="email" placeholder="Email" autoComplete="off" />
+                          </FormItem>
+                        </Col>
+                    </Row> 
 
                   </Col>
                 </Row> 
