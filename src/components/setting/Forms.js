@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { Form, Input, InputNumber, Button, Select, Checkbox, Upload, message, Icon, Row, Col, DatePicker } from 'antd'
+import { 
+  Form, Input, InputNumber, Select, 
+  Checkbox, Upload, message, Row, Col, Tooltip, 
+  Popover, Popconfirm, DatePicker, Button, Switch } from 'antd';
 import BirthDatePicker from "../utility/datePicker";
 import './Forms.css'
 
@@ -161,7 +164,8 @@ class Forms extends Component {
                             />
                           </FormItem>
                         </Col>                           
-                    </Row>  
+                    </Row> 
+
                     <Row justify="start" className="appFormStyle">
                         <Col md={12} xs={24}>
                           <FormItem 
@@ -218,6 +222,7 @@ class Forms extends Component {
                           </FormItem>
                         </Col>  
                     </Row> 
+
                     <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="Note" name="note"
@@ -237,6 +242,14 @@ class Forms extends Component {
                           </FormItem>  
                         </Col> 
                     </Row>    
+
+                    <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                            <FormItem label="Active">
+                              <Switch />
+                            </FormItem>
+                        </Col>
+                      </Row>
 
                   </Col>
                 </Row> 
