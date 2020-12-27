@@ -118,9 +118,7 @@ class Forms extends Component {
 
                   </Col>
                 </Row> 
-            </Form>       
-
-                      
+            </Form>   
          </div>
          
         );  
