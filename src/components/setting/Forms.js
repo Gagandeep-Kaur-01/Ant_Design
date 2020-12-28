@@ -5,6 +5,7 @@ import {
   Form, Input, InputNumber, Select, 
   Checkbox, Upload, message, Row, Col, Tooltip, 
   Popover, Popconfirm, DatePicker, Button, Switch } from 'antd';
+  import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import BirthDatePicker from "../utility/datePicker";
 import './Forms.css'
 
@@ -13,14 +14,97 @@ const Option = Select.Option;
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
+//Before Image Upload
+function beforeUpload(file) {
+  return false;
+}; 
+
+//Get base64 String From Image
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
+/*function beforeUpload(file) {
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!');
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error('Image must smaller than 2MB!');
+  }
+  return isJpgOrPng && isLt2M;
+}
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}*/
+
 
 class Forms extends Component {
 
     constructor(props) {
         super(props);
-    }
+        this.state = {
+          loading: false,
+        };      
+    };
+
+    //After Image Upload
+    handleUpload = info => {
+      const isJPG = info.file.type === "image/jpeg";
+      const isPNG = info.file.type === "image/png";
+      const isGIF = info.file.type === "image/gif";
+      if (!isJPG && !isPNG && !isGIF) {
+        message.error("You can only upload image file!");
+        return false;
+      }
+      const isLt2M = info.file.size / 1024 / 1024 < 2;
+      if (!isLt2M) {
+        message.error("Image must smaller than 2MB!");
+        return false;
+      }
+      this.setState({
+        loading: true,
+        selectedImage: info.fileList.slice(-1)[0].originFileObj
+      });
+      getBase64(info.fileList.slice(-1)[0].originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false
+        })
+      );
+    };    
+
+   /* handleChange = info => {
+      if (info.file.status === 'uploading') {
+        this.setState({ loading: true });
+        return;
+      }
+      if (info.file.status === 'done') {
+        // Get this url from response in real world.
+        getBase64(info.file.originFileObj, imageUrl =>
+          this.setState({
+            imageUrl,
+            loading: false,
+          }),
+        );
+      }
+    };*/
+    
 
     render(){
+
+      const { loading, imageUrl } = this.state;
+      const uploadButton = (
+        <div>
+          {loading ? <LoadingOutlined /> : <PlusOutlined />}
+          <div style={{ marginTop: 8 }}> Upload</div>
+        </div>
+      );
 
       //Convert capital to small letters
       const getLowercaseValue = e => e.target.value.toLowerCase().trim();
@@ -76,9 +160,11 @@ class Forms extends Component {
                                 name="avatar"
                                 listType="picture-card"
                                 className="avatar-uploader"
-                                
+                                showUploadList={false}
+                                beforeUpload={beforeUpload}
+                                onChange={this.handleUpload}
                                 >
-                                  
+                                  {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width:'100%' }} /> : uploadButton}
                               </Upload>
                           </FormItem>
                         </Col> 
