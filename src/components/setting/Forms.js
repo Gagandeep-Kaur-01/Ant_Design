@@ -69,6 +69,21 @@ class Forms extends Component {
                <Row style={rowStyle} gutter={gutter} justify="start"> 
                   <Col md={24} sm={24} xs={24} style={colStyle}> 
                 
+                  <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24}>
+                          <FormItem label="Image">                         
+                              <Upload
+                                name="avatar"
+                                listType="picture-card"
+                                className="avatar-uploader"
+                                
+                                >
+                                  
+                              </Upload>
+                          </FormItem>
+                        </Col> 
+                    </Row>  
+                    
                     <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="First Name" hasFeedback>                          
