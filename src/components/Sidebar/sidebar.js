@@ -11,6 +11,7 @@ import {
   AppstoreOutlined,
   EllipsisOutlined
 } from '@ant-design/icons';
+import Dashboard from '../Pages/Dashboard/dashboard';
 import Form from '../Pages/Form/form';
 import SidebarWrapper from './sidebar.style';
 
@@ -41,9 +42,9 @@ class Sidebar extends React.Component {
             <Menu.Item key="1" icon={<AppstoreOutlined />}>
               <NavLink
                 to={{
-                pathname: '/1'                                
+                    pathname: '/dashboard'                                
                 }}>
-                1
+                Dashboard
               </NavLink>
             </Menu.Item>
             
@@ -78,7 +79,8 @@ class Sidebar extends React.Component {
         <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0, background: "#fff" }} />
             <Content style={{ margin: '0 16px' }}>            
-              <Switch>                   
+              <Switch>      
+                <Route path="/dashboard" component={() => <Dashboard />}></Route>                
                 <Route path="/form" component={() => <Form />} /> 
               </Switch>
             </Content>
