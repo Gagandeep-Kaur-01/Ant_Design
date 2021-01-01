@@ -12,6 +12,7 @@ import {
   EllipsisOutlined
 } from '@ant-design/icons';
 import Form from '../Pages/Form/form';
+import SidebarWrapper from './sidebar.style';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -29,7 +30,7 @@ class Sidebar extends React.Component {
   render() {
     const { collapsed } = this.state;
     return (
-     
+     <SidebarWrapper>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="sidebarHeading" >
@@ -85,7 +86,7 @@ class Sidebar extends React.Component {
         </Layout>
         
       </Layout>
-     
+      </SidebarWrapper> 
       
     );
   }
