@@ -13,12 +13,14 @@ import {
 } from '@ant-design/icons';
 import Dashboard from '../Pages/Dashboard/dashboard';
 import Form from '../Pages/Form/form';
+import Option1 from '../Pages/Option/option1'
+import Option2 from '../Pages/Option/option2'
 import SidebarWrapper from './sidebar.style';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class Sidebar extends React.Component {
+class Sidebar1 extends React.Component {
   state = {
     collapsed: false,
   };
@@ -42,7 +44,7 @@ class Sidebar extends React.Component {
             <Menu.Item key="1" icon={<AppstoreOutlined />}>
               <NavLink
                 to={{
-                    pathname: '/dashboard'                                
+                pathname: '/dashboard'                                
                 }}>
                 Dashboard
               </NavLink>
@@ -79,19 +81,21 @@ class Sidebar extends React.Component {
         <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0, background: "#fff" }} />
             <Content style={{ margin: '0 16px' }}>            
-              <Switch>      
-                <Route path="/dashboard" component={() => <Dashboard />}></Route>                
-                <Route path="/form" component={() => <Form />} /> 
+              <Switch>
+                <Route path="/dashboard" component={() => <Dashboard />}></Route>                    
+                <Route path="/form" component={() => <Form />} />     
+                <Route path="/option1" component={() => <Option1 />} />     
+                <Route path="/option2" component={() => <Option2 />} />           
               </Switch>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Form ©2021</Footer>
+            <Footer style={{ textAlign: 'center' }}>Ant Form ©2020</Footer>
         </Layout>
         
       </Layout>
-      </SidebarWrapper> 
+     </SidebarWrapper> 
       
     );
   }
 }
 
-export default Sidebar;
+export default Sidebar1;
