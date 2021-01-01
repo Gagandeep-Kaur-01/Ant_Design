@@ -100,12 +100,12 @@
     width: 620px ;
 }
 /*.appForm .appFormStyle .ant-calendar-picker-input.ant-input .ant-calendar-range-picker-separator input {*/
-.range{  
+  .range{  
     text-align: left;
     border-bottom: 1px solid #CECECE;
     border: none;
     padding:0%;
-    width: 530px;
+    width: 520px ;
 }
 .range:focus{  
     text-align: left;
@@ -133,9 +133,9 @@
     outline: 0 ;
     -webkit-box-shadow: none;
     box-shadow: none!important;
-    margin-top: 5px; 
+    margin-top: 10px; 
     margin-bottom: 0px; 
-    height: 45px;
+    height: 55px;
 }
 .blue-btn {
     background-color: #16528E;
