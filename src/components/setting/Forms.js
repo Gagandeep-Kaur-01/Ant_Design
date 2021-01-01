@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { 
   Form, Input, InputNumber, Select, 
   Checkbox, Upload, message, Row, Col, Tooltip, 
-  Popover, Popconfirm, DatePicker, Button, Switch } from 'antd';
-  import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+  Popover, Popconfirm, DatePicker, Button, Switch } from 'antd'
+//import Button from "../utility/button";
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import BirthDatePicker from "../utility/datePicker";
+import PhoneInput from 'react-phone-number-input/input'
 import './Forms.css'
 
 const FormItem = Form.Item;
@@ -43,14 +47,21 @@ function getBase64(img, callback) {
   reader.readAsDataURL(img);
 }*/
 
-
 class Forms extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
           loading: false,
+          redirectToReferrer: false
         };      
+    };
+
+    //If agree
+    onAgreeChange = async e => { 
+      this.setState({
+        agreeChecked: !this.state.agreeChecked
+      });
     };
 
     //After Image Upload
@@ -94,7 +105,6 @@ class Forms extends Component {
         );
       }
     };*/
-    
 
     render(){
 
@@ -106,9 +116,11 @@ class Forms extends Component {
         </div>
       );
 
+      //Only allow numbers
+      const checkNumericValue = e => e.target.value.replace(/\D/, "");
+      
       //Convert capital to small letters
       const getLowercaseValue = e => e.target.value.toLowerCase().trim();
-
         const layout = {   
           labelCol: {
           span: 8,
@@ -117,6 +129,7 @@ class Forms extends Component {
           span: 16,
           },
         }; 
+     
         const formItemLayoutDesc = {
            wrapperCol: {
             xs: { span: 24 },
@@ -132,28 +145,28 @@ class Forms extends Component {
         const gutter = 16;
 
         const validateMessages = {
-            required: '${label} is required!',
-            types: {
-              email: '${label} is not a valid email!',
-              number: '${label} is not a valid number!',
-            },
-            number: {
-            range: '${label} must be between ${min} and ${max}',
-            },
-          };
-
+          required: 'Please enter ${label}.',
+          types: {
+            email: '${label} is not a valid email!',
+            number: '${label} is not a valid number!',
+          },
+          number: {
+          range: '${label} must be between ${min} and ${max}',
+          },
+        };
+        
         const onFinish = (values) => {
         console.log(values);
-        };
+        };      
 
-        return (
+       return (
           <div>
             <h2 className="topHeading">Form in Ant Design</h2>
             <Form style={{ width: "100%", marginRight: "10px" }} onFinish={onFinish} validateMessages={validateMessages} className="appForm" >
                <Row style={rowStyle} gutter={gutter} justify="start"> 
                   <Col md={24} sm={24} xs={24} style={colStyle}> 
-                
-                  <Row justify="start" className="appFormStyle" >
+
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24}>
                           <FormItem label="Image">                         
                               <Upload
@@ -168,33 +181,43 @@ class Forms extends Component {
                               </Upload>
                           </FormItem>
                         </Col> 
-                    </Row>  
-                    
-                    <Row justify="start" className="appFormStyle" >
+                      </Row>  
+                
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
-                          <FormItem label="First Name" hasFeedback>                          
-                            <Input type="text" name="first_name" id="first_name" maxLength={150} placeholder="First Name" autoComplete="off" />
+                          <FormItem label="First Name" name="firstname"
+                                     rules={[
+                                      {
+                                      required: true,
+                                      },
+                                      ]}  hasFeedback>         
+                                                      
+                            <Input type="text" name="first_name" id="first_name" maxLength={50} placeholder="First Name" autoComplete="off" />
                           </FormItem>
                         </Col>
                         <Col md={12} xs={24}>
-                          <FormItem label="Last Name" hasFeedback>                          
-                              <Input type="text" name="last_name" id="last_name" maxLength={150} placeholder="Last Name" autoComplete="off"/>
+                          <FormItem label="Last Name" name="last_name"
+                                    rules={[
+                                      {
+                                      required: true,
+                                      },
+                                      ]}  hasFeedback>                          
+                              <Input type="text" name="last_name" id="last_name" maxLength={50} placeholder="Last Name" autoComplete="off"/>
                           </FormItem>
                         </Col>
-                    </Row>
-                    
-                    <Row justify="start" className="appFormStyle" >
+                      </Row>
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="Password" 
                                     name="password"
                                     rules={[
                                       {
-                                      //required: true,
+                                      required: true,
                                       },
-                                      ]}  hasFeedback>                          
+                                      ]}  hasFeedback>                        
                             <Input type="password" name="password" id="password" placeholder="Password" autoComplete="off" />
                           </FormItem>
-                        </Col> 
+                        </Col>    
                         <Col md={12} xs={24} >
                           <FormItem
                             name="confirm"
@@ -203,8 +226,8 @@ class Forms extends Component {
                             hasFeedback
                             rules={[
                               {
-                                //required: true,
-                                message: 'Please confirm your password!',
+                                required: true,
+                                message: 'Please confirm your password.',
                               },
                               ({ getFieldValue }) => ({
                                 validator(rule, value) {
@@ -218,12 +241,11 @@ class Forms extends Component {
                            >
                             <Input type="password" name="password" id="password" placeholder="Confirm Password" autoComplete="off" />
                           </FormItem>
-                        </Col>                             
-                    </Row>
-
-                    <Row justify="start" className="appFormStyle">
+                        </Col>                    
+                      </Row>
+                      <Row justify="start" className="appFormStyle">
                         <Col md={12} xs={24}>
-                          <FormItem label="Gender">
+                          <FormItem label="Gender" name="gender">
                             <Select
                               name="gender"
                               id="gender"
@@ -241,20 +263,28 @@ class Forms extends Component {
                           </FormItem>
                         </Col>
                         <Col md={12} xs={24}>
-                          <FormItem label="Birth Date">                            
-                            <BirthDatePicker/>    
+                          <FormItem label="Birth Date" name="birth">                            
+                            <BirthDatePicker />    
                           </FormItem>
                         </Col>
-                    </Row> 
-
-                    <Row justify="start" className="appFormStyle" >
+                      </Row>  
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem label="Range" hasFeedback>                          
                             <RangePicker picker="date" bordered={false} className="range"/>
                           </FormItem>
                         </Col> 
                         <Col md={12} xs={24}>
-                          <FormItem label="Contact Number" hasFeedback>
+                          <FormItem label="Contact Number" name="phone_number"
+                               rules={[
+                                {
+                                  required: true,
+                                  min: 10,
+                                  max:14,
+                                  message: "Contact number must be 10 digit long."
+                                },                            
+                              ]}                               
+                              hasFeedback  >
                             <Input
                               type="number"
                               pattern="^-?[0-9]\d*\.?\d*$"
@@ -264,10 +294,9 @@ class Forms extends Component {
                               placeholder="Contact Number" autoComplete="off"
                             />
                           </FormItem>
-                        </Col>                           
-                    </Row> 
-
-                    <Row justify="start" className="appFormStyle">
+                        </Col>                       
+                      </Row>
+                      <Row justify="start" className="appFormStyle">
                         <Col md={12} xs={24}>
                           <FormItem 
                                 label="Email" 
@@ -275,33 +304,10 @@ class Forms extends Component {
                                 name="email"                             
                                 rules={[
                                   {
-                                    //required: true,
+                                    required: true,
                                     type: "email",
 							                      message: "Please enter valid email."
-                                  },
-                                  ({getFieldValue}) => ({
-                                    getValueFromEvent: getLowercaseValue,
-					                          validate: [{
-					                          trigger: 'onChange',
-					        	                  rules: [{
-							                          type: "email",
-							                          message: "Please enter valid email."
-						                        	  },
-						                          	{
-							                            required: true,
-							                            whitespace: true,
-							                            message: "Please enter email."
-						                           	}
-					                        	  ]
-					                          	}, { 
-					                            	trigger: 'onChange',
-					                                rules: [
-						                             	  {
-						                            		validator: this.handleTrigger
-						                              	}
-					                                ]
-					                            }]
-                                  }) 
+                                  },                                  
                                 ]} 
                                 hasFeedback  >
                             <Input type="email" name="email" id="email" placeholder="Email" autoComplete="off" />
@@ -322,17 +328,10 @@ class Forms extends Component {
                             <Input type="number" name="age" id="age" placeholder="Age" autoComplete="off" />
                           </FormItem>
                         </Col>  
-                    </Row> 
-
-                    <Row justify="start" className="appFormStyle" >
+                      </Row>            
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
-                          <FormItem label="Note" name="note"
-                                     /*rules={[
-                                      {
-                                      //required: true,
-                                      },
-                                      ]}*/  hasFeedback>         
-                                                      
+                          <FormItem label="Note" name="note" hasFeedback>
                             <TextArea name="note" id="note" rows={6} placeholder="Notes" />
                           </FormItem>
                         </Col> 
@@ -341,17 +340,28 @@ class Forms extends Component {
                             <Input type="text" name="zip" id="zip" maxLength={6}
                                placeholder="Zip" autoComplete="off" />
                           </FormItem>  
-                        </Col> 
-                    </Row>    
-
-                    <Row justify="start" className="appFormStyle" >
+                        </Col>                     
+                      </Row>    
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                             <FormItem label="Active">
                               <Switch />
                             </FormItem>
                         </Col>
-                    </Row>
-                    <Row justify="start" className="appFormStyle" >
+                      </Row>
+                      <Row justify="start" className="appFormStyle" >
+                        <Col md={12} xs={24} >
+                          <FormItem >
+                          <span>
+						                <Checkbox checked={this.state.agreeChecked} onChange={this.onAgreeChange}>
+						                 I Agree with
+						                </Checkbox>
+		                       {/*} <Link to={{ pathname: "" }} onClick={this.showModal}>Waiver and Release</Link>*/}
+					              	</span>
+                          </FormItem>
+                        </Col>
+                      </Row> 
+                      <Row justify="start" className="appFormStyle" >
                         <Col md={12} xs={24} >
                           <FormItem>
                             <Button type="primary"  className="blue-btn" htmlType="submit">
@@ -359,13 +369,12 @@ class Forms extends Component {
                             </Button>
                           </FormItem> 
                         </Col>     
-                    </Row> 
-
-                  </Col>
+                      </Row> 
+                      
+                   </Col>
                 </Row> 
-            </Form>   
-         </div>
-         
+            </Form>
+          </div>  
         );  
     }
 }
