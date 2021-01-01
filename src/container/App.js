@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from '../components/setting/Forms';
+import Form from '../components/Pages/Form/form';
 
 class App extends Component {
   render() {

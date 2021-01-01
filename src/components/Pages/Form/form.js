@@ -9,9 +9,9 @@ import {
   Popover, Popconfirm, DatePicker, Button, Switch } from 'antd'
 //import Button from "../utility/button";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import BirthDatePicker from "../utility/datePicker";
+import BirthDatePicker from "../../Utility/Styles/datePicker";
 import PhoneInput from 'react-phone-number-input/input'
-import './Forms.css'
+import './form.css'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
