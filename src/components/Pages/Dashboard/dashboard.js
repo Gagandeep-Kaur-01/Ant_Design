@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "antd";
 import underConstruction from '../../Utility/Images/under_construction.png';
+import "./dashboard.css"
 
 export default class extends Component {
     render() {

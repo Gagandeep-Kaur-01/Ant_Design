@@ -1,0 +1,26 @@
+.text-center{
+	align-items: center;
+}
+.dashboard{
+  padding: 40px 20px ;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+}
+.under-construction-image {
+vertical-align: middle;
+padding: 40px 20px;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+	.under-construction-image {
+		width: 400px;
+	}
+}
+@media (max-width: 500px) {
+	.under-construction-image {
+		width: 300px;
+	}
+}
