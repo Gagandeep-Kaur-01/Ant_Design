@@ -9,13 +9,15 @@ import {
   UserOutlined,
   UserAddOutlined,
   AppstoreOutlined,
-  EllipsisOutlined
+  EllipsisOutlined,
+  MenuUnfoldOutlined 
 } from '@ant-design/icons';
 import Dashboard from '../Pages/Dashboard/dashboard';
 import Form from '../Pages/Form/form';
 import Option1 from '../Pages/Option/option1'
 import Option2 from '../Pages/Option/option2'
 import SidebarWrapper from './sidebar.style';
+import Drawer from '../Pages/Drawer/drawer'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -73,7 +75,14 @@ class Sidebar1 extends React.Component {
                 pathname: '/option2'                                
                 }}>Option 2
               </NavLink>              
-            </Menu.Item>                   
+            </Menu.Item>   
+
+            <Menu.Item key="5" icon={<MenuUnfoldOutlined />}>
+              <NavLink to={{
+                pathname: '/drawer'                                
+                }}>Drawer
+              </NavLink>              
+            </Menu.Item>                 
             
           </Menu>
         </Sider>
@@ -85,7 +94,8 @@ class Sidebar1 extends React.Component {
                 <Route path="/dashboard" component={() => <Dashboard />}></Route>                    
                 <Route path="/form" component={() => <Form />} />     
                 <Route path="/option1" component={() => <Option1 />} />     
-                <Route path="/option2" component={() => <Option2 />} />           
+                <Route path="/option2" component={() => <Option2 />} />
+                <Route path="/drawer" component={() => <Drawer />} />           
               </Switch>
             </Content>
             <Footer style={{ textAlign: 'center' }}>Ant Form ©2020</Footer>
